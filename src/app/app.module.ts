@@ -11,16 +11,26 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
 import { ReservationsComponent } from './components/reservations/reservations.component';
-import { TreeComponent } from './components/reservations/tree/tree.component';
-import { TreeDetailsComponent } from './components/reservations/tree-details/tree-details.component';
+import { LoginComponent } from './components/admin/login/login.component';
+import { HeaderComponent } from './components/header/header.component';
+import { RegisterComponent } from './components/admin/register/register.component';
+import { ForgotPasswordComponent } from './components/admin/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/admin/verify-email/verify-email.component';
+import { ReservationItemComponent } from './components/reservations/reservation-item/reservation-item.component';
+import { ReservationDetailComponent } from './components/reservations/reservation-detail/reservation-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TreeComponent,
-    TreeDetailsComponent,
     AboutComponent,
     ReservationsComponent,
+    LoginComponent,
+    HeaderComponent,
+    RegisterComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
+    ReservationItemComponent,
+    ReservationDetailComponent,
   ],
   imports: [
     BrowserModule,

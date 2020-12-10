@@ -1,0 +1,21 @@
+<div class="container header">
+    <div class="row">
+        <div class="col-9">
+            <div [routerLink]="['/about']" style="cursor: pointer;"><h1 class="text-center header-text">Christmas Tree Reservation System</h1></div>
+        </div>
+
+
+
+
+        <div class="col-3" style="padding: 10px 5px;">
+            <div *ngIf="auth.user$ | async as user; else login">
+                {{ user.displayName }}
+                <button class="btn btn-primary" (click)="auth.signOut()">Logout</button>
+            </div>
+            
+            <ng-template #login>
+                <button class="btn btn-primary" (click)="auth.googleSignIn()">Login with Google</button> 
+            </ng-template> 
+        </div> 
+    </div>
+</div>
