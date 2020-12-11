@@ -14,3 +14,7 @@
 <div class="row justify-content-md-center">
     {{ reservation.note }}
 </div>
+
+<agm-map [latitude]='reservation.posX' [longitude]='reservation.posY' [mapTypeId]='"satellite"' [zoom]='20'>
+    <agm-marker [latitude]="reservation.posX" [longitude]="reservation.posY"></agm-marker>
+</agm-map>

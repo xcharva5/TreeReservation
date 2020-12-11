@@ -1,3 +1,4 @@
+import { ReservationNewComponent } from './components/reservations/reservation-new/reservation-new.component';
 import { ReservationDetailComponent } from './components/reservations/reservation-detail/reservation-detail.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -11,8 +12,9 @@ import { ReservationsComponent } from './components/reservations/reservations.co
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'reservations', component: ReservationsComponent },
-  { path: 'reservations/:id', component: ReservationDetailComponent },
-
+  { path: 'reservations/detail/:id', component: ReservationDetailComponent },
+  { path: 'reservations/new', component: ReservationNewComponent },
+  
   // { path: 'login', component: LoginComponent },
   // { path: 'register', component: RegisterComponent },
   // { path: 'forgot-password', component: ForgotPasswordComponent },

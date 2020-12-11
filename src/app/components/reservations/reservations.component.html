@@ -2,10 +2,10 @@
     <app-reservation-item 
         *ngFor="let reservation of reservations; let index=index" 
         [reservation]="reservation"
-        [routerLink]="['/reservations', index]">
+        [routerLink]="['/reservations/detail', index]">
     </app-reservation-item>
     <hr>
-    <button class="btn btn-primary" (click)="createReservation()">New</button>
+    <button class="btn btn-primary" [routerLink]="['/reservations/new']">New</button>
 </div>
 
 
