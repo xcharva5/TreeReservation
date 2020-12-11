@@ -15,7 +15,7 @@ export class ReservationDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.reservation = RESERVATIONS[+params.get('id') - 1];
+      this.reservation = RESERVATIONS[+params.get('id')];
     });
   }
 

@@ -4,3 +4,7 @@
     INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE 
     INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE 
 </div>
+
+<div *ngIf="auth.user$ | async as user" class="text-center">
+    <button class="btn btn-primary" [routerLink]="['/reservations']">Go to reservations</button>
+</div>

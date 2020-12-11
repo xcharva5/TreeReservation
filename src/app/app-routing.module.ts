@@ -11,7 +11,7 @@ import { ReservationsComponent } from './components/reservations/reservations.co
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'reservations', component: ReservationsComponent },
-  { path: 'reservations/reservation-detail/:id', component: ReservationDetailComponent },
+  { path: 'reservations/:id', component: ReservationDetailComponent },
 
   // { path: 'login', component: LoginComponent },
   // { path: 'register', component: RegisterComponent },

@@ -6,5 +6,5 @@ export interface Reservation {
     email?: string;
     posX: number;
     posY: number;
-    note: string;
+    note?: string;
 }

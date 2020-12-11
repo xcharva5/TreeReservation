@@ -1,3 +1,4 @@
+import { LocationService } from './../../services/location.service';
 import { Reservation } from './../../models/reservation.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -46,6 +47,7 @@ export class ReservationsComponent implements OnInit {
   
   constructor(
     public auth: AuthService, 
+    public location: LocationService, 
     public router: Router, 
     public route: ActivatedRoute) { 
 
@@ -57,6 +59,13 @@ export class ReservationsComponent implements OnInit {
         this.router.navigate(['reservations'], { relativeTo: this.route }); 
       }
     })
+  }
+
+  createReservation(): void {
+    const loc = this.location.getLocation().then(response => {
+      const reservation = { id: 4, firstName: "Test", lastName: "Test", phone: "+000123456789", posX: response.lat, posY: response.lng };
+      this.reservations.push(reservation);
+    });
   }
 
 }
