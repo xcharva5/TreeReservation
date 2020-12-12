@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-reservation-new',
@@ -7,17 +6,14 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./reservation-new.component.scss']
 })
 export class ReservationNewComponent implements OnInit {
-  reservationForm;
+  firstName = "";
+  lastName = "";
+  phone = "";
+  latitude = "";
+  longitude = "";
+  note = "";
 
-  constructor(private formBuilder: FormBuilder) {
-    this.reservationForm = this.formBuilder.group({
-      firstName: '',
-      lastName: '',
-      phone: '',
-      latitude: '',
-      longitude: '',
-      note: ''
-    })
+  constructor() {
   }
 
   ngOnInit(): void {

@@ -10,7 +10,6 @@ export const RESERVATIONS: Reservation[] = [
     firstName: "Ondra",
     lastName: "Charvat",
     phone: "+420608932909",
-    email: "andycharvat@gmail.com",
     posX: 48.9633986,
     posY: 16.7621608,
     note: "Specialni zasilka!"
@@ -20,7 +19,6 @@ export const RESERVATIONS: Reservation[] = [
     firstName: "Tomas",
     lastName: "Unverdorben",
     phone: "+420123456789",
-    email: "unver@gmail.com",
     posX: 48.9635100,
     posY: 16.7621328,
     note: "Pan domaci"
@@ -30,7 +28,6 @@ export const RESERVATIONS: Reservation[] = [
     firstName: "Jenda",
     lastName: "Holecek",
     phone: "+420987654321",
-    email: "djhateo@best.com",
     posX: 48.9635769,
     posY: 16.7624761,
     note: "El Maestro"
