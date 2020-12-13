@@ -1,0 +1,27 @@
+<div *ngIf="reservation">
+    <div class="form-group">
+        <label for="firstName">First name</label>
+        <input type="text" class="form-control" id="firstName" [(ngModel)]="reservation.firstName">
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last name</label>
+        <input type="text" class="form-control" id="lastName" [(ngModel)]="reservation.lastName">
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" class="form-control" id="phone" [(ngModel)]="reservation.phone">
+    </div>
+    <div class="form-group">
+        <label for="latitude">Latitude</label>
+        <input type="text" class="form-control" id="latitude" [(ngModel)]="reservation.latitude">
+    </div>
+    <div class="form-group">
+        <label for="longitude">Longitude</label>
+        <input type="text" class="form-control" id="longitude" [(ngModel)]="reservation.longitude">
+    </div>
+    <div class="form-group">
+        <label for="note">Note</label>
+        <input type="text" class="form-control" id="note" [(ngModel)]="reservation.note">
+    </div>
+    <button class="btn btn-primary" (click)="updateReservation()">Update</button>
+</div>

@@ -1,25 +1,29 @@
 <div class="form-group">
     <label for="firstName">First name</label>
-    <input type="text" class="form-control" id="firstName" [value]="firstName">
+    <input type="text" class="form-control" id="firstName" [(ngModel)]="firstName">
 </div>
 <div class="form-group">
     <label for="lastName">Last name</label>
-    <input type="text" class="form-control" id="lastName" [value]="lastName">
+    <input type="text" class="form-control" id="lastName" [(ngModel)]="lastName">
 </div>
 <div class="form-group">
     <label for="phone">Phone</label>
-    <input type="tel" class="form-control" id="phone" [value]="phone">
+    <input type="tel" class="form-control" id="phone" [(ngModel)]="phone">
 </div>
 <div class="form-group">
     <label for="latitude">Latitude</label>
-    <input type="text" class="form-control" id="latitude" [value]="latitude">
+    <input type="text" class="form-control" id="latitude" [(ngModel)]="latitude">
 </div>
 <div class="form-group">
     <label for="longitude">Longitude</label>
-    <input type="text" class="form-control" id="longitude" [value]="longitude">
+    <input type="text" class="form-control" id="longitude" [(ngModel)]="longitude">
 </div>
 <div class="form-group">
     <label for="note">Note</label>
-    <input type="text" class="form-control" id="note" [value]="note">
+    <input type="text" class="form-control" id="note" [(ngModel)]="note">
 </div>
+<agm-map [latitude]='defaultLat' [longitude]='defaultLng' [mapTypeId]='"satellite"' [zoom]='20'>
+    <agm-marker [latitude]="defaultLat" [longitude]="defaultLng" [markerDraggable]="true" id="marker"
+      (dragEnd)="markerDragEnd($event)"></agm-marker>
+</agm-map>
 <button class="btn btn-primary" (click)="createReservation()">Create</button>

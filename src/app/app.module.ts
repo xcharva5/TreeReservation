@@ -22,6 +22,7 @@ import { VerifyEmailComponent } from './components/admin/verify-email/verify-ema
 import { ReservationItemComponent } from './components/reservations/reservation-item/reservation-item.component';
 import { ReservationDetailComponent } from './components/reservations/reservation-detail/reservation-detail.component';
 import { ReservationNewComponent } from './components/reservations/reservation-new/reservation-new.component';
+import { ReservationUpdateComponent } from './components/reservations/reservation-update/reservation-update.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ReservationNewComponent } from './components/reservations/reservation-n
     ReservationItemComponent,
     ReservationDetailComponent,
     ReservationNewComponent,
+    ReservationUpdateComponent,
   ],
   imports: [
     BrowserModule,

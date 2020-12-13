@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Reservation } from 'src/app/models/reservation.interface';
-import { RESERVATIONS } from '../reservations.component';
+import { AuthService } from 'src/app/services/auth.service';
+import { ReservationsService } from 'src/app/services/reservations.service';
 
 @Component({
   selector: 'app-reservation-detail',
@@ -11,12 +12,27 @@ import { RESERVATIONS } from '../reservations.component';
 export class ReservationDetailComponent implements OnInit {
   reservation: Reservation;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private reservationService: ReservationsService,
+    public auth: AuthService,
+    public router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.reservation = RESERVATIONS[+params.get('id')];
+      this.reservationService.getReservation(params.get('id')).subscribe(data => {
+        this.reservation = {
+          id: data.payload.id,
+          ...data.payload.data() as {}
+        } as Reservation        
+      })
     });
+  }
+
+  deleteReservation(id: string) {
+    this.reservationService.deleteReservation(id);
+    this.router.navigate(['reservations']); 
   }
 
 }

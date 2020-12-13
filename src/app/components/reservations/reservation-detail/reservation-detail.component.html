@@ -1,17 +1,27 @@
-<div class="row justify-content-md-center">
-    {{ reservation.firstName }}
-    {{ reservation.lastName }}
-</div>
-<div class="row justify-content-md-center">
-    {{ reservation.phone }}
-</div>
-<div class="row justify-content-md-center">
-    {{ reservation.posX }}, {{ reservation.posY }}
-</div>
-<div class="row justify-content-md-center">
-    {{ reservation.note }}
+<div *ngIf="reservation">
+    <div class="row justify-content-md-center">
+        {{ reservation.firstName }}
+        {{ reservation.lastName }}
+    </div>
+    <div class="row justify-content-md-center">
+        {{ reservation.phone }}
+    </div>
+    <div class="row justify-content-md-center">
+        {{ reservation.latitude }}, {{ reservation.longitude }}
+    </div>
+    <div class="row justify-content-md-center">
+        {{ reservation.note }}
+    </div>
+    <br>
+    <agm-map [latitude]='reservation.latitude' [longitude]='reservation.longitude' [mapTypeId]='"satellite"' [zoom]='20'>
+        <agm-marker [latitude]="reservation.latitude" [longitude]="reservation.longitude"></agm-marker>
+    </agm-map>
+    <br>
+
+    <div *ngIf="auth.user$" class="text-center">
+        <button class="btn btn-primary" [routerLink]="['/reservations']">Go to reservations</button>
+        <button class="btn btn-primary" [routerLink]="['/reservations/update', reservation.id]">Update reservation</button>
+        <button class="btn btn-danger" (click)="deleteReservation(reservation.id)">Delete reservation</button>
+    </div>
 </div>
 
-<agm-map [latitude]='reservation.posX' [longitude]='reservation.posY' [mapTypeId]='"satellite"' [zoom]='20'>
-    <agm-marker [latitude]="reservation.posX" [longitude]="reservation.posY"></agm-marker>
-</agm-map>

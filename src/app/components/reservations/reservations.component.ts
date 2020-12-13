@@ -3,36 +3,7 @@ import { Reservation } from './../../models/reservation.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-
-export const RESERVATIONS: Reservation[] = [
-  {
-    id: 1,
-    firstName: "Ondra",
-    lastName: "Charvat",
-    phone: "+420608932909",
-    posX: 48.9633986,
-    posY: 16.7621608,
-    note: "Specialni zasilka!"
-  },
-  {
-    id: 2,
-    firstName: "Tomas",
-    lastName: "Unverdorben",
-    phone: "+420123456789",
-    posX: 48.9635100,
-    posY: 16.7621328,
-    note: "Pan domaci"
-  },
-  {
-    id: 3,
-    firstName: "Jenda",
-    lastName: "Holecek",
-    phone: "+420987654321",
-    posX: 48.9635769,
-    posY: 16.7624761,
-    note: "El Maestro"
-  }
-]
+import { ReservationsService } from 'src/app/services/reservations.service';
 
 @Component({
   selector: 'app-reservations',
@@ -40,15 +11,15 @@ export const RESERVATIONS: Reservation[] = [
   styleUrls: ['./reservations.component.scss']
 })
 export class ReservationsComponent implements OnInit {
-  reservations = RESERVATIONS;
+  reservations: Reservation[];
   
   constructor(
     public auth: AuthService, 
     public location: LocationService, 
     public router: Router, 
-    public route: ActivatedRoute) { 
-
-    }
+    public route: ActivatedRoute,
+    private reservationService: ReservationsService
+  ) { }
 
   ngOnInit(): void {
     this.auth.user$.subscribe(user => {
@@ -56,13 +27,14 @@ export class ReservationsComponent implements OnInit {
         this.router.navigate(['reservations'], { relativeTo: this.route }); 
       }
     })
-  }
 
-  createReservation(): void {
-    const loc = this.location.getLocation().then(response => {
-      const reservation = { id: 4, firstName: "Test", lastName: "Test", phone: "+000123456789", posX: response.lat, posY: response.lng };
-      this.reservations.push(reservation);
-    });
+    this.reservationService.getAllReservations().subscribe(data => {
+      this.reservations = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as {}
+        } as Reservation
+      })
+    })
   }
-
 }

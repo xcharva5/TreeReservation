@@ -1,9 +1,11 @@
 export interface Reservation {
-    id: number;
+    id?: string;
     firstName: string;
     lastName: string;
     phone: string;
-    posX: number;
-    posY: number;
+    latitude: number;
+    longitude: number;
     note?: string;
+    dateCreated?: Date;
+    datePickUp?: Date;
 }

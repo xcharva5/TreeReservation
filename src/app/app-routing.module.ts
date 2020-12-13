@@ -3,17 +3,15 @@ import { ReservationDetailComponent } from './components/reservations/reservatio
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
-import { ForgotPasswordComponent } from './components/admin/forgot-password/forgot-password.component';
-import { LoginComponent } from './components/admin/login/login.component';
-import { RegisterComponent } from './components/admin/register/register.component';
-import { VerifyEmailComponent } from './components/admin/verify-email/verify-email.component';
 import { ReservationsComponent } from './components/reservations/reservations.component';
+import { ReservationUpdateComponent } from './components/reservations/reservation-update/reservation-update.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'reservations', component: ReservationsComponent },
   { path: 'reservations/detail/:id', component: ReservationDetailComponent },
   { path: 'reservations/new', component: ReservationNewComponent },
+  { path: 'reservations/update/:id', component: ReservationUpdateComponent },
   
   // { path: 'login', component: LoginComponent },
   // { path: 'register', component: RegisterComponent },

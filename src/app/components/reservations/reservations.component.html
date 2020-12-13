@@ -1,8 +1,8 @@
 <div *ngIf="auth.user$ | async as user; else no_access">
     <app-reservation-item 
-        *ngFor="let reservation of reservations; let index=index" 
+        *ngFor="let reservation of reservations" 
         [reservation]="reservation"
-        [routerLink]="['/reservations/detail', index]">
+        [routerLink]="['/reservations/detail', reservation.id]">
     </app-reservation-item>
     <hr>
     <button class="btn btn-primary" [routerLink]="['/reservations/new']">New</button>
