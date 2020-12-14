@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
+  addressLatitude = 48.9638511;
+  addressLongitude = 16.7623553;
+  addressMapType = "satellite";
+  addressZoom = 17;
 
   constructor(
     public auth: AuthService

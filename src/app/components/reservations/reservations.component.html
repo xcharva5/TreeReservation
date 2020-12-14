@@ -1,16 +1,19 @@
-<div *ngIf="auth.user$ | async as user; else no_access">
-    <app-reservation-item 
-        *ngFor="let reservation of reservations" 
-        [reservation]="reservation"
-        [routerLink]="['/reservations/detail', reservation.id]">
-    </app-reservation-item>
-    <hr>
-    <button class="btn btn-primary" [routerLink]="['/reservations/new']">New</button>
+<div *ngIf="auth.user$ | async; else no_access">
+    <div *ngIf="reservations && reservations.length > 0; else no_data">
+        <app-reservation-item 
+            *ngFor="let reservation of reservations" 
+            [reservation]="reservation"
+            [routerLink]="['/reservations/detail', reservation.id]">
+        </app-reservation-item>
+        <hr>
+    </div>
+    <button class="btn btn-dark" [routerLink]="['/reservations/new']">Nová rezervace</button>
 </div>
 
-
-
-
 <ng-template #no_access>
-    HEY MAN! You cannot access this page.
+    <div class="reservations__message">Na tuto stránku nemáte práva!</div>
 </ng-template> 
+
+<ng-template #no_data>
+    <div class="reservations__message">Neexistuje žádná rezervace. Zkuste vytvořit novou...</div>
+</ng-template>

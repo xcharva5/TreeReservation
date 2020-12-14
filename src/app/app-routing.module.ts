@@ -9,14 +9,9 @@ import { ReservationUpdateComponent } from './components/reservations/reservatio
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'reservations', component: ReservationsComponent },
-  { path: 'reservations/detail/:id', component: ReservationDetailComponent },
   { path: 'reservations/new', component: ReservationNewComponent },
+  { path: 'reservations/detail/:id', component: ReservationDetailComponent },
   { path: 'reservations/update/:id', component: ReservationUpdateComponent },
-  
-  // { path: 'login', component: LoginComponent },
-  // { path: 'register', component: RegisterComponent },
-  // { path: 'forgot-password', component: ForgotPasswordComponent },
-  // { path: 'verify-email', component: VerifyEmailComponent },
   { path: '', redirectTo: 'about', pathMatch: 'full' },
   { path: '**', redirectTo: 'about', pathMatch: 'full' }
 ];

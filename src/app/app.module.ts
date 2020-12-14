@@ -14,11 +14,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
 import { ReservationsComponent } from './components/reservations/reservations.component';
-import { LoginComponent } from './components/admin/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
-import { RegisterComponent } from './components/admin/register/register.component';
-import { ForgotPasswordComponent } from './components/admin/forgot-password/forgot-password.component';
-import { VerifyEmailComponent } from './components/admin/verify-email/verify-email.component';
 import { ReservationItemComponent } from './components/reservations/reservation-item/reservation-item.component';
 import { ReservationDetailComponent } from './components/reservations/reservation-detail/reservation-detail.component';
 import { ReservationNewComponent } from './components/reservations/reservation-new/reservation-new.component';
@@ -29,11 +25,7 @@ import { ReservationUpdateComponent } from './components/reservations/reservatio
     AppComponent,
     AboutComponent,
     ReservationsComponent,
-    LoginComponent,
     HeaderComponent,
-    RegisterComponent,
-    ForgotPasswordComponent,
-    VerifyEmailComponent,
     ReservationItemComponent,
     ReservationDetailComponent,
     ReservationNewComponent,

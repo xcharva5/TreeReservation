@@ -1,4 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
-.card {
-    box-shadow: 0  10px  20px  rgba(0,0,0,0.19), 0  6px  6px  rgba(0,0,0,0.23);
+.container {
+    padding-top: 20px;
+}
+
+*:focus {
+    outline: none;
+}
+
+.header {
+    &__user-name {
+       color: white;
+       padding-right: 20px;
+    }
+}
+
+.about {
+    &__intro {
+        padding-top: 20px;
+        color: #343a40;
+    }
+
+    &__contact {
+        font-size: 150%;
+        padding-top: 20px;
+        color: #343a40;
+    }
+
+    &__map {
+        height: 300px;
+    }
+}
+
+.reservations {
+    &__message {
+        padding-bottom: 20px;
+    }
+}
+
+.reservation-item {
+    &__card {
+        padding: 10px 0;
+        margin: 10px 0;
+        color: #343a40;
+        box-shadow: -1px 3px #343a40;
+        border: 1px solid #343a40;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #67737e;
+            color: white;
+        }
+
+        &:active {
+            box-shadow: -1px 1px #343a40;
+            transform: translateY(1px);
+        }
+    }
+}
+
+.reservation-detail {
+    &__map {
+        height: 500px;
+    }
+
+    &__map-wrapper {
+        margin: 20px 0;
+    }
+
+    &__button {
+        margin: 0 5px;
+    }
+
+    &__button-section {
+        margin: 0 10px;
+    }
 }

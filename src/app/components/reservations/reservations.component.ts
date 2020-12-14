@@ -29,10 +29,10 @@ export class ReservationsComponent implements OnInit {
     })
 
     this.reservationService.getAllReservations().subscribe(data => {
-      this.reservations = data.map(e => {
+      this.reservations = data.map(res => {
         return {
-          id: e.payload.doc.id,
-          ...e.payload.doc.data() as {}
+          id: res.payload.doc.id,
+          ...res.payload.doc.data() as {}
         } as Reservation
       })
     })

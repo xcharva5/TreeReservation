@@ -1,10 +1,35 @@
-<div class="row justify-content-md-center">
-    INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE 
-    INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE 
-    INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE 
-    INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE INTRO MESSAGE 
+<div class="about__intro">
+    <p>
+        Zveme vás na malý rodinný výlet,
+    </p>
+    <p>
+        v překrásném prostředí kurdějovského údolí v Ježíškově zahrádce, pro vás rostou vánoční stromečky vypiplané s láskou a pečlivostí. 
+        Čeká tu na vás několik set krásných smrků pichlavých (stříbrných) a nádherných borovic černých. Oba tyto druhy velmi dlouho vydrží 
+        aniž by v teple domova ztrácely svoje voňave jehličí.
+    </p>
+    <p>
+        Přijeďte si už teď vybrat a označit ten svůj. S vaší jmenovkou tu pak na vás počká až do poloviny prosince, kdy si jej přijedete vyzvednout. 
+        Čerstvý stromeček vám pak uřízneme, zabalíme a pomůžeme naložit do vašeho auta. Veselým a vzrušujícím překvapením pro děti pak jistě bude, 
+        když se jim podaří mezi stromečky spatřit ukrytého divočáka Václava - strážce zahrádky, který prý nosí štěstí, tomu kdo jej potká. Velikou 
+        předností stromečků od nas je jednotná cena 350 Kč, bez ohledu na velikost. Za peníze ušetřené u nás můžete udělat o to větši radost svým blízkým... 
+    </p>
+    <p>
+        Věnovat se vám budeme ve všední dny i o víkendech. Návštěvu Ježíškovy zahrádky si můžete domluvit předem telefonicky. Budeme se tesit na vasi navstevu
+    </p>
 </div>
 
-<div *ngIf="auth.user$ | async as user" class="text-center">
-    <button class="btn btn-primary" [routerLink]="['/reservations']">Go to reservations</button>
+<agm-map class="about__map" [latitude]="addressLatitude" [longitude]="addressLongitude" [mapTypeId]="addressMapType" [zoom]="addressZoom">
+    <agm-marker [latitude]="addressLatitude" [longitude]="addressLongitude"></agm-marker>
+</agm-map>
+
+<div class="about__contact">
+    <p class="text-center">
+        724 985 621 nebo 724 523 277
+    </p>
+    <p class="text-center">
+        Kurdějov 226, Kurdějov
+    </p>
+    <p class="text-center">
+        okres Břeclav, Jihomoravský kraj
+    </p>
 </div>

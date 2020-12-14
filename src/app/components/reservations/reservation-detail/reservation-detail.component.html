@@ -1,27 +1,36 @@
-<div *ngIf="reservation">
-    <div class="row justify-content-md-center">
+<div *ngIf="auth.user$ && reservation && reservation.phone; else no_data">
+    <div class="text-center">
         {{ reservation.firstName }}
         {{ reservation.lastName }}
     </div>
-    <div class="row justify-content-md-center">
+    <div class="text-center">
         {{ reservation.phone }}
     </div>
-    <div class="row justify-content-md-center">
-        {{ reservation.latitude }}, {{ reservation.longitude }}
-    </div>
-    <div class="row justify-content-md-center">
+    <div class="text-center">
         {{ reservation.note }}
     </div>
-    <br>
-    <agm-map [latitude]='reservation.latitude' [longitude]='reservation.longitude' [mapTypeId]='"satellite"' [zoom]='20'>
-        <agm-marker [latitude]="reservation.latitude" [longitude]="reservation.longitude"></agm-marker>
-    </agm-map>
-    <br>
 
-    <div *ngIf="auth.user$" class="text-center">
-        <button class="btn btn-primary" [routerLink]="['/reservations']">Go to reservations</button>
-        <button class="btn btn-primary" [routerLink]="['/reservations/update', reservation.id]">Update reservation</button>
-        <button class="btn btn-danger" (click)="deleteReservation(reservation.id)">Delete reservation</button>
+    <div class="reservation-detail__map-wrapper">
+        <agm-map class="reservation-detail__map" [latitude]='reservation.latitude' [longitude]='reservation.longitude' [mapTypeId]='"satellite"' [zoom]='20'>
+            <agm-marker [latitude]="reservation.latitude" [longitude]="reservation.longitude"></agm-marker>
+        </agm-map>
+    </div>
+
+    <div class="text-center">
+        <span class="reservation-detail__button-section">
+            <button class="btn btn-dark reservation-detail__button" [routerLink]="['/reservations']">Zpět do rezervací</button>
+            <button class="btn btn-dark reservation-detail__button" [routerLink]="['/reservations/update', reservation.id]">Upravit rezervaci</button>
+        </span>
+        <span class="reservation-detail__button-section">
+            <button class="btn btn-danger reservation-detail__button" (click)="deleteReservation(reservation.id)">Smazat rezervaci</button>
+        </span>
     </div>
 </div>
+
+<ng-template #no_data>
+    <div>
+        Rezervace nebyla nalezena. Zkus to znovu...
+    </div>
+</ng-template>
+
 

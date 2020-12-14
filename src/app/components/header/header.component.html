@@ -1,21 +1,25 @@
-<div class="container header">
-    <div class="row">
-        <div class="col-9">
-            <div [routerLink]="['/about']" style="cursor: pointer;"><h1 class="text-center header-text">Christmas Tree Reservation System</h1></div>
-        </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" [routerLink]="['/about']">Vánoční stromky Kurdějov</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" *ngIf="auth.user$ | async as user">
+                <a class="nav-link" [routerLink]="['/reservations']">Rezervace</a>
+            </li>
+        </ul>
 
-
-
-
-        <div class="col-3" style="padding: 10px 5px;">
+        <div>
             <div *ngIf="auth.user$ | async as user; else login">
-                {{ user.displayName }}
-                <button class="btn btn-primary" (click)="auth.signOut()">Logout</button>
+                <span class="header__user-name">{{ user.displayName }}</span>
+                <button class="btn btn-light" (click)="auth.signOut()">Odhlásit</button>
             </div>
             
             <ng-template #login>
-                <button class="btn btn-primary" (click)="auth.googleSignIn()">Login with Google</button> 
+                <button class="btn btn-light" (click)="auth.googleSignIn()">Přihlásit</button> 
             </ng-template> 
-        </div> 
+        </div>
     </div>
-</div>
+  </nav>
