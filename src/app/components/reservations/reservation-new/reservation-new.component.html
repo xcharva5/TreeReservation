@@ -11,19 +11,13 @@
     <input type="tel" class="form-control" id="phone" [(ngModel)]="phone">
 </div>
 <div class="form-group">
-    <label for="latitude">Latitude</label>
-    <input type="text" class="form-control" id="latitude" [(ngModel)]="latitude">
-</div>
-<div class="form-group">
-    <label for="longitude">Longitude</label>
-    <input type="text" class="form-control" id="longitude" [(ngModel)]="longitude">
-</div>
-<div class="form-group">
     <label for="note">Note</label>
     <input type="text" class="form-control" id="note" [(ngModel)]="note">
 </div>
-<agm-map [latitude]='defaultLat' [longitude]='defaultLng' [mapTypeId]='"satellite"' [zoom]='20'>
-    <agm-marker [latitude]="defaultLat" [longitude]="defaultLng" [markerDraggable]="true" id="marker"
-      (dragEnd)="markerDragEnd($event)"></agm-marker>
+
+<agm-map [latitude]='latitude' [longitude]='longitude' [mapTypeId]='"satellite"' [zoom]='20'>
+    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true"
+    (dragEnd)="markerDragEnd($event)"></agm-marker>
 </agm-map>
+<br>
 <button class="btn btn-primary" (click)="createReservation()">Create</button>

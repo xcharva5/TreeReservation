@@ -1,7 +1,8 @@
 import { ReservationsService } from './../../../services/reservations.service';
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Reservation } from 'src/app/models/reservation.interface';
 import { ActivatedRoute, Router } from '@angular/router';
+// import { MouseEvent } from '@agm/core';
 
 @Component({
   selector: 'app-reservation-new',
@@ -9,26 +10,22 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./reservation-new.component.scss']
 })
 export class ReservationNewComponent implements OnInit {
-  defaultLat = 48.9635122;
-  defaultLng = 16.7623097;
-
   firstName = "";
   lastName = "";
   phone = "";
-  latitude = 0;
-  longitude = 0;
+  latitude = 48.9635122;
+  longitude = 16.7623097;
   note = "";
-
-  marker;
 
   constructor(
     private reservationService: ReservationsService,
     public router: Router,
-    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.marker  = (<HTMLInputElement>document.getElementById('marker'));
+    // this.markerManager.createEventObservable("dragend", this.marker).subscribe(() => {
+    //   console.log("marker drag");
+    // })
   }
 
   createReservation(): void {
@@ -54,7 +51,10 @@ export class ReservationNewComponent implements OnInit {
   }
 
   markerDragEnd($event) {
-    console.log(this.marker);
+    // console.log($event.coords.lat);
+    // console.log($event.coords.lng);
+    this.latitude = $event.coords.lat;
+    this.longitude = $event.coords.lng;
   }
 
   

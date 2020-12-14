@@ -45,4 +45,11 @@ export class ReservationUpdateComponent implements OnInit {
 
   }
 
+  markerDragEnd($event) {
+    // console.log($event.coords.lat);
+    // console.log($event.coords.lng);
+    this.reservation.latitude = $event.coords.lat;
+    this.reservation.longitude = $event.coords.lng;
+  }
+
 }
