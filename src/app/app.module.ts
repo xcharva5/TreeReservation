@@ -19,6 +19,7 @@ import { ReservationItemComponent } from './components/reservations/reservation-
 import { ReservationDetailComponent } from './components/reservations/reservation-detail/reservation-detail.component';
 import { ReservationNewComponent } from './components/reservations/reservation-new/reservation-new.component';
 import { ReservationUpdateComponent } from './components/reservations/reservation-update/reservation-update.component';
+import { FilterReservationsPipe } from './pipes/filter-reservations.pipe';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ReservationUpdateComponent } from './components/reservations/reservatio
     ReservationDetailComponent,
     ReservationNewComponent,
     ReservationUpdateComponent,
+    FilterReservationsPipe,
   ],
   imports: [
     BrowserModule,
