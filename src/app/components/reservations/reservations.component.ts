@@ -39,7 +39,7 @@ export class ReservationsComponent implements OnInit {
           id: res.payload.doc.id,
           ...res.payload.doc.data() as {}
         } as Reservation
-      }).sort((a, b) => (a.datePickUp > b.datePickUp) ? 1 : -1);
+      }).sort((a, b) => (a.lastName > b.lastName) ? 1 : -1);
     }) 
   }
 }

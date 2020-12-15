@@ -1,6 +1,12 @@
 <div *ngIf="auth.user$ | async; else no_access">
-    <div>
-        <input class="reservations__search" type="text" [(ngModel)]="searchText" placeholder="Hledat...">
+    <div class="row">
+        <div class="col-md-2">
+            <button class="btn btn-dark reservations__add-button" [routerLink]="['/reservations/new']">Nová rezervace</button>
+        </div>
+        <div class="col-md-7"></div>
+        <div class="col-md-3">
+            <input class="reservations__search" type="text" [(ngModel)]="searchText" placeholder="Hledat...">
+        </div>
     </div>
     <div *ngIf="reservations && reservations.length > 0; else no_data">
         <app-reservation-item 
@@ -9,7 +15,6 @@
             [routerLink]="['/reservations/detail', reservation.id]">
         </app-reservation-item>
     </div>
-    <button class="btn btn-dark reservations__add-button" [routerLink]="['/reservations/new']">Nová rezervace</button>
 </div>
 
 <ng-template #no_access>

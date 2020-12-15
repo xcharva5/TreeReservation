@@ -15,9 +15,11 @@ export class ReservationNewComponent implements OnInit {
   profileForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    phone: ['', Validators.required],
-    datePickup: ['', Validators.required],
-    note: ['']
+    address: ['', Validators.required],
+    treeNumber: ['', Validators.required],
+    ribbon: ['', Validators.required],
+    phone: [''],
+    note: [''],
   });
 
   constructor(
@@ -34,12 +36,14 @@ export class ReservationNewComponent implements OnInit {
     this.reservationService.createReservation({
       firstName: this.reservation.firstName,
       lastName: this.reservation.lastName,
+      address: this.reservation.address,
+      treeNumber: Number(this.reservation.treeNumber),
+      ribbon: this.reservation.ribbon,
       phone: this.reservation.phone,
-      latitude: Number(this.reservation.latitude),
-      longitude: Number(this.reservation.longitude),
       note: this.reservation.note,
       dateCreated: this.reservation.dateCreated,
-      datePickUp: this.reservation.datePickUp,      
+      latitude: Number(this.reservation.latitude),
+      longitude: Number(this.reservation.longitude),
     });
     
     this.reservation = this.getEmptyReservation();
@@ -55,12 +59,14 @@ export class ReservationNewComponent implements OnInit {
     return {
       firstName: "",
       lastName: "",
+      address: "",
+      treeNumber: 0,
+      ribbon: "",
       phone: "",
-      latitude: 48.9635122,
-      longitude: 16.7623097,
       note: "",
       dateCreated: this.getDate(new Date()),
-      datePickUp: this.getDate(new Date())
+      latitude: 48.9635122,
+      longitude: 16.7623097,
     }
   }
 

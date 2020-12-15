@@ -15,9 +15,11 @@ export class ReservationUpdateComponent implements OnInit {
   profileForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    phone: ['', Validators.required],
-    datePickup: ['', Validators.required],
-    note: ['']
+    address: ['', Validators.required],
+    treeNumber: ['', Validators.required],
+    ribbon: ['', Validators.required],
+    phone: [''],
+    note: [''],
   });
 
   constructor(
@@ -33,7 +35,7 @@ export class ReservationUpdateComponent implements OnInit {
         this.reservation = {
           id: data.payload.id,
           ...data.payload.data() as {}
-        } as Reservation   
+        } as Reservation 
       });
     });
   }
@@ -43,33 +45,22 @@ export class ReservationUpdateComponent implements OnInit {
       id: this.reservation.id,
       firstName: this.reservation.firstName,
       lastName: this.reservation.lastName,
+      address: this.reservation.address,
+      treeNumber: Number(this.reservation.treeNumber),
+      ribbon: this.reservation.ribbon,
       phone: this.reservation.phone,
+      note: this.reservation.note,
+      dateCreated: this.reservation.dateCreated,
       latitude: Number(this.reservation.latitude),
       longitude: Number(this.reservation.longitude),
-      note: this.reservation.note, 
-      datePickUp: this.reservation.datePickUp
     }
 
     this.reservationService.updateReservation(reservation);
     this.router.navigate(['reservations/detail/' + reservation.id]); 
-
   }
 
   public markerDragEnd($event) {
     this.reservation.latitude = $event.coords.lat;
     this.reservation.longitude = $event.coords.lng;
   }
-
-  public hasData(): boolean {
-    return (
-      this.reservation && 
-      this.reservation.firstName &&
-      this.reservation.lastName &&
-      this.reservation.phone &&
-      this.reservation.latitude &&
-      this.reservation.longitude &&
-      this.reservation.dateCreated
-    ) ? true : false;
-  }
-
 }

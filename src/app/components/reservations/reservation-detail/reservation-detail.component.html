@@ -1,20 +1,22 @@
 <div *ngIf="auth.user$ && reservation && reservation.id; else no_data">
-    <div class="text-center" *ngIf="reservation.firstName && reservation.lastName">
-        <img class="reservation-detail__icon" src="../../../../assets/icons/person-black-24dp.svg">
-        {{ reservation.firstName }}
-        {{ reservation.lastName }}
+    <div class="text-center" *ngIf="reservation.firstName && reservation.lastName && reservation.address">
+      <img class="reservation-detail__icon" src="../../../../assets/icons/person-black-24dp.svg">
+      {{ reservation.firstName }}
+      {{ reservation.lastName }}
+      <img class="reservation-detail__icon" src="../../../../assets/icons/home-black-18dp.svg">
+      {{ reservation.address }}
     </div>
-    <div class="text-center" *ngIf="reservation.phone">
-      <img class="reservation-detail__icon" src="../../../../assets/icons/phone-black-24dp.svg">
-      {{ reservation.phone }}
+    <div class="text-center" *ngIf="reservation.treeNumber && reservation.ribbon">
+      <img class="reservation-detail__icon" src="../../../../assets/icons/christmas-tree.svg">
+      {{ reservation.treeNumber }} | {{ reservation.ribbon }}
     </div>
     <div class="text-center" *ngIf="reservation.dateCreated">
       <img class="reservation-detail__icon" src="../../../../assets/icons/calendar_today-black-24dp.svg">
       {{ reservation.dateCreated | date: 'dd-MM-yyyy' }}
     </div>
-    <div class="text-center" *ngIf="reservation.datePickUp">
-      <img class="reservation-detail__icon" src="../../../../assets/icons/event_available-black-24dp.svg">
-      {{ reservation.datePickUp | date: 'dd-MM-yyyy' }}
+    <div class="text-center" *ngIf="reservation.phone">
+      <img class="reservation-detail__icon" src="../../../../assets/icons/phone-black-24dp.svg">
+      {{ reservation.phone }}
     </div>
     <div class="text-center" *ngIf="reservation.note">
       <img class="reservation-detail__icon" src="../../../../assets/icons/comment-black-24dp.svg">
@@ -30,9 +32,7 @@
     <div class="text-center">
       <button class="btn btn-dark reservation-detail__button" [routerLink]="['/reservations']">Zpět do rezervací</button>
       <button class="btn btn-dark reservation-detail__button" [routerLink]="['/reservations/update', reservation.id]">Upravit rezervaci</button>
-      <button type="button" class="btn btn-danger reservation-detail__button" data-toggle="modal" data-target="#deleteModal">Smazat rezervaci</button>
-
-        
+      <button type="button" class="btn btn-danger reservation-detail__button" data-toggle="modal" data-target="#deleteModal">Smazat rezervaci</button>        
     </div>
 </div>
 

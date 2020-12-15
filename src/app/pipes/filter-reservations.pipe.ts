@@ -19,8 +19,9 @@ export class FilterReservationsPipe implements PipeTransform {
       return (
         it.firstName.toLocaleLowerCase().includes(searchText) ||
         it.lastName.toLocaleLowerCase().includes(searchText) ||
-        it.phone.toLocaleLowerCase().includes(searchText) ||
-        it.datePickUp.toLocaleLowerCase().includes(searchText)
+        it.phone.toLocaleLowerCase().includes(searchText) || 
+        it.ribbon.toLocaleLowerCase().includes(searchText) ||
+        it.treeNumber.toString().includes(searchText)
       );
     });
   }
