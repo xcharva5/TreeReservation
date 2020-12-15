@@ -25,12 +25,12 @@ export class ReservationDetailComponent implements OnInit {
         this.reservation = {
           id: data.payload.id,
           ...data.payload.data() as {}
-        } as Reservation      
-      })
+        } as Reservation   
+      });
     });
   }
 
-  deleteReservation(id: string) {
+  public deleteReservation(id: string): void {
     this.reservationService.deleteReservation(id);
     this.router.navigate(['reservations']); 
   }

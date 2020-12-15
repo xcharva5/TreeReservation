@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
 .container {
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 *:focus {
@@ -34,6 +41,15 @@
     &__message {
         padding-bottom: 20px;
     }
+
+    &__add-button {
+        margin-top: 20px;
+    }
+
+    &__search {
+        border: 1px solid #343a40;
+        border-radius: .25rem;
+    }
 }
 
 .reservation-item {
@@ -43,11 +59,12 @@
         color: #343a40;
         box-shadow: -1px 3px #343a40;
         border: 1px solid #343a40;
+        border-radius: .25rem;
         cursor: pointer;
 
         &:hover {
-            background-color: #67737e;
-            color: white;
+            box-shadow: -1px 5px #343a40;
+            transform: translateY(-2px);
         }
 
         &:active {
@@ -67,10 +84,26 @@
     }
 
     &__button {
-        margin: 0 5px;
+        margin: 5px;
     }
 
     &__button-section {
         margin: 0 10px;
+    }
+
+    &__icon {
+        width: 20px;
+    }
+}
+
+.reservation-new {
+    &__create-button {
+        margin-top: 20px;
+    }
+}
+
+.reservation-update {
+    &__update-button {
+        margin-top: 20px;
     }
 }

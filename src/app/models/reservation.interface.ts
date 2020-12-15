@@ -6,6 +6,6 @@ export interface Reservation {
     latitude: number;
     longitude: number;
     note?: string;
-    dateCreated?: Date;
-    datePickUp?: Date;
+    dateCreated?: string;
+    datePickUp?: string;
 }

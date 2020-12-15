@@ -1,7 +1,7 @@
 import { LocationService } from './../../services/location.service';
 import { Reservation } from './../../models/reservation.interface';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ReservationsService } from 'src/app/services/reservations.service';
 
@@ -12,6 +12,7 @@ import { ReservationsService } from 'src/app/services/reservations.service';
 })
 export class ReservationsComponent implements OnInit {
   reservations: Reservation[];
+  searchText = "";
   
   constructor(
     public auth: AuthService, 
@@ -28,13 +29,17 @@ export class ReservationsComponent implements OnInit {
       }
     })
 
+    this.obtainAllReservations();
+  }
+
+  private obtainAllReservations() {
     this.reservationService.getAllReservations().subscribe(data => {
       this.reservations = data.map(res => {
         return {
           id: res.payload.doc.id,
           ...res.payload.doc.data() as {}
         } as Reservation
-      })
-    })
+      }).sort((a, b) => (a.datePickUp > b.datePickUp) ? 1 : -1);
+    }) 
   }
 }

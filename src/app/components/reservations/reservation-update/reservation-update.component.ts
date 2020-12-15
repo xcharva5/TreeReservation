@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Reservation } from 'src/app/models/reservation.interface';
 import { ReservationsService } from 'src/app/services/reservations.service';
@@ -11,10 +12,19 @@ import { ReservationsService } from 'src/app/services/reservations.service';
 export class ReservationUpdateComponent implements OnInit {
   reservation: Reservation;
 
+  profileForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    phone: ['', Validators.required],
+    datePickup: ['', Validators.required],
+    note: ['']
+  });
+
   constructor(
     private reservationService: ReservationsService,
     private route: ActivatedRoute,
     public router: Router,
+    private fb: FormBuilder, 
   ) { }
 
   ngOnInit(): void {
@@ -23,12 +33,12 @@ export class ReservationUpdateComponent implements OnInit {
         this.reservation = {
           id: data.payload.id,
           ...data.payload.data() as {}
-        } as Reservation        
-      })
+        } as Reservation   
+      });
     });
   }
 
-  updateReservation(): void {
+  public updateReservation(): void {
     const reservation: Reservation = {
       id: this.reservation.id,
       firstName: this.reservation.firstName,
@@ -36,20 +46,30 @@ export class ReservationUpdateComponent implements OnInit {
       phone: this.reservation.phone,
       latitude: Number(this.reservation.latitude),
       longitude: Number(this.reservation.longitude),
-      note: this.reservation.note
+      note: this.reservation.note, 
+      datePickUp: this.reservation.datePickUp
     }
 
     this.reservationService.updateReservation(reservation);
-
     this.router.navigate(['reservations/detail/' + reservation.id]); 
 
   }
 
-  markerDragEnd($event) {
-    // console.log($event.coords.lat);
-    // console.log($event.coords.lng);
+  public markerDragEnd($event) {
     this.reservation.latitude = $event.coords.lat;
     this.reservation.longitude = $event.coords.lng;
+  }
+
+  public hasData(): boolean {
+    return (
+      this.reservation && 
+      this.reservation.firstName &&
+      this.reservation.lastName &&
+      this.reservation.phone &&
+      this.reservation.latitude &&
+      this.reservation.longitude &&
+      this.reservation.dateCreated
+    ) ? true : false;
   }
 
 }

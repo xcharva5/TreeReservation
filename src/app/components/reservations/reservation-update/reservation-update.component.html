@@ -1,25 +1,47 @@
-<div *ngIf="reservation">
-    <div class="form-group">
-        <label for="firstName">First name</label>
-        <input type="text" class="form-control" id="firstName" [(ngModel)]="reservation.firstName">
-    </div>
-    <div class="form-group">
-        <label for="lastName">Last name</label>
-        <input type="text" class="form-control" id="lastName" [(ngModel)]="reservation.lastName">
-    </div>
-    <div class="form-group">
-        <label for="phone">Phone</label>
-        <input type="tel" class="form-control" id="phone" [(ngModel)]="reservation.phone">
-    </div>
-    <div class="form-group">
-        <label for="note">Note</label>
-        <input type="text" class="form-control" id="note" [(ngModel)]="reservation.note">
-    </div>
-
-    <agm-map [latitude]='reservation.latitude' [longitude]='reservation.longitude' [mapTypeId]='"satellite"' [zoom]='20'>
-        <agm-marker [latitude]="reservation.latitude" [longitude]="reservation.longitude" [markerDraggable]="true"
-        (dragEnd)="markerDragEnd($event)"></agm-marker>
-    </agm-map>
-    <br>
-    <button class="btn btn-primary" (click)="updateReservation()">Update</button>
+<div *ngIf="reservation && reservation.id; else no_data">
+    <form class="was-validated" [formGroup]="profileForm">
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <span for="firstName">Jméno</span>
+                <input type="text" class="form-control" placeholder="Jan" [(ngModel)]="reservation.firstName" formControlName="firstName" required>
+                <div class="invalid-feedback">Jméno zákazníka je povinné!</div>
+            </div>
+            <div class="form-group col-sm-6">
+                <span for="lastName">Příjmení</span>
+                <input type="text" class="form-control" placeholder="Novák" [(ngModel)]="reservation.lastName" formControlName="lastName" required>
+                <div class="invalid-feedback">Příjmení zákazníka je povinné!</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <span for="phone">Telefon</span>
+                <input type="tel" class="form-control" placeholder="+420123456789" [(ngModel)]="reservation.phone" formControlName="phone" required>
+                <div class="invalid-feedback">Telefonní číslo zákazníka je povinné!</div>
+            </div>
+            <div class="form-group col-sm-6">
+                <span for="phone">Datum vyzvednutí</span>
+                <input type="date" class="form-control" placeholder="Datum vyzvednutí" [(ngModel)]="reservation.datePickUp" formControlName="datePickup" min="2020-01-01" max="2030-12-31" required>
+                <div class="invalid-feedback">Datum vyzvednutí je povinné!</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-12">
+                <span for="note">Poznámka</span>
+                <input type="text" class="form-control" placeholder="přijede dopoledne" [(ngModel)]="reservation.note" formControlName="note">
+            </div>
+        </div>
+        
+        <agm-map [latitude]='reservation.latitude' [longitude]='reservation.longitude' [mapTypeId]='"satellite"' [zoom]='19'>
+            <agm-marker [latitude]="reservation.latitude" [longitude]="reservation.longitude" [markerDraggable]="true"
+            (dragEnd)="markerDragEnd($event)"></agm-marker>
+        </agm-map>
+        
+        <button [disabled]="!profileForm.valid" class="btn btn-dark reservation-update__update-button" (click)="updateReservation()">Upravit rezervaci</button>
+    </form>    
 </div>
+
+<ng-template #no_data>
+    <div>
+        Něco se pokazilo. Zkus to znova...
+    </div>
+</ng-template>

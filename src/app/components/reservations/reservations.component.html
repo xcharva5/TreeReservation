@@ -1,13 +1,16 @@
 <div *ngIf="auth.user$ | async; else no_access">
+    <div>
+        <input class="reservations__search" type="text" [(ngModel)]="searchText" (keyup)="filterReservations()" placeholder="Search..">
+        {{searchText}}
+    </div>
     <div *ngIf="reservations && reservations.length > 0; else no_data">
         <app-reservation-item 
             *ngFor="let reservation of reservations" 
             [reservation]="reservation"
             [routerLink]="['/reservations/detail', reservation.id]">
         </app-reservation-item>
-        <hr>
     </div>
-    <button class="btn btn-dark" [routerLink]="['/reservations/new']">Nová rezervace</button>
+    <button class="btn btn-dark reservations__add-button" [routerLink]="['/reservations/new']">Nová rezervace</button>
 </div>
 
 <ng-template #no_access>

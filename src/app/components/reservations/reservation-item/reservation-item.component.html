@@ -1,6 +1,6 @@
 <div class="row reservation-item__card">
-    <div class="col-sm-3">{{ reservation.firstName }}</div>
-    <div class="col-sm-3">{{ reservation.lastName }}</div>
-    <div class="col-sm-3">{{ reservation.phone }}</div>
-    <div class="col-sm-3">{{ reservation.note }}</div>
+    <div class="col-md-3">{{ reservation.lastName }}</div>
+    <div class="col-md-3">{{ reservation.firstName }}</div>
+    <div class="col-md-3">{{ reservation.phone }}</div>
+    <div class="col-md-3">{{ reservation.datePickUp | date: 'dd-MM-yyyy'}}</div>
 </div>

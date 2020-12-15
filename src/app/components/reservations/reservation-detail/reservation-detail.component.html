@@ -1,31 +1,60 @@
-<div *ngIf="auth.user$ && reservation && reservation.phone; else no_data">
-    <div class="text-center">
+<div *ngIf="auth.user$ && reservation && reservation.id; else no_data">
+    <div class="text-center" *ngIf="reservation.firstName && reservation.lastName">
+        <img class="reservation-detail__icon" src="../../../../assets/icons/person-black-24dp.svg">
         {{ reservation.firstName }}
         {{ reservation.lastName }}
     </div>
-    <div class="text-center">
-        {{ reservation.phone }}
+    <div class="text-center" *ngIf="reservation.phone">
+      <img class="reservation-detail__icon" src="../../../../assets/icons/phone-black-24dp.svg">
+      {{ reservation.phone }}
     </div>
-    <div class="text-center">
-        {{ reservation.note }}
+    <div class="text-center" *ngIf="reservation.dateCreated">
+      <img class="reservation-detail__icon" src="../../../../assets/icons/calendar_today-black-24dp.svg">
+      {{ reservation.dateCreated | date: 'dd-MM-yyyy' }}
+    </div>
+    <div class="text-center" *ngIf="reservation.datePickUp">
+      <img class="reservation-detail__icon" src="../../../../assets/icons/event_available-black-24dp.svg">
+      {{ reservation.datePickUp | date: 'dd-MM-yyyy' }}
+    </div>
+    <div class="text-center" *ngIf="reservation.note">
+      <img class="reservation-detail__icon" src="../../../../assets/icons/comment-black-24dp.svg">
+      {{ reservation.note }}
     </div>
 
-    <div class="reservation-detail__map-wrapper">
-        <agm-map class="reservation-detail__map" [latitude]='reservation.latitude' [longitude]='reservation.longitude' [mapTypeId]='"satellite"' [zoom]='20'>
+    <div class="reservation-detail__map-wrapper" *ngIf="reservation.latitude && reservation.longitude">
+        <agm-map class="reservation-detail__map" [latitude]='reservation.latitude' [longitude]='reservation.longitude' [mapTypeId]='"satellite"' [zoom]='19'>
             <agm-marker [latitude]="reservation.latitude" [longitude]="reservation.longitude"></agm-marker>
         </agm-map>
     </div>
 
     <div class="text-center">
-        <span class="reservation-detail__button-section">
-            <button class="btn btn-dark reservation-detail__button" [routerLink]="['/reservations']">Zpět do rezervací</button>
-            <button class="btn btn-dark reservation-detail__button" [routerLink]="['/reservations/update', reservation.id]">Upravit rezervaci</button>
-        </span>
-        <span class="reservation-detail__button-section">
-            <button class="btn btn-danger reservation-detail__button" (click)="deleteReservation(reservation.id)">Smazat rezervaci</button>
-        </span>
+      <button class="btn btn-dark reservation-detail__button" [routerLink]="['/reservations']">Zpět do rezervací</button>
+      <button class="btn btn-dark reservation-detail__button" [routerLink]="['/reservations/update', reservation.id]">Upravit rezervaci</button>
+      <button type="button" class="btn btn-danger reservation-detail__button" data-toggle="modal" data-target="#deleteModal">Smazat rezervaci</button>
+
+        
     </div>
 </div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Smazat rezervaci</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Opravdu si přejete smazat tuto rezervaci?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-dark" data-dismiss="modal">Zpět</button>
+          <button type="button" class="btn btn-danger" (click)="deleteReservation(reservation.id)" data-dismiss="modal">Smazat</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <ng-template #no_data>
     <div>
